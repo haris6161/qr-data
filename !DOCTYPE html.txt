@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>QR dari GitHub</title>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+</head>
+<body>
+  <h1>QR Code dari Data GitHub</h1>
+  <div id="qrcode"></div>
+
+  <script>
+    fetch("https://raw.githubusercontent.com/username/qr-data/main/data.json")
+      .then(response => response.json())
+      .then(data => {
+        QRCode.toCanvas(document.getElementById("qrcode"), data.qr_link, function (error) {
+          if (error) console.error(error);
+        });
+      });
+  </script>
+</body>
+</html>
+
